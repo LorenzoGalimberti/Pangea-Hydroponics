@@ -1,0 +1,164 @@
+{% extends "base_1.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head_title %}{{ block.super }}| Carrello{% endblock head_title %}
+{% load bootstrap_icons %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+      body{
+        font-family: 'Poppins', sans-serif;
+      }
+      .box{
+        margin-top: 5%;
+        min-height: 50vh;
+        width: 90%;
+        margin-left: 5%;
+        display: flex;
+        flex-direction: column;
+      }
+      .flexbox{
+        position: relative;
+        margin-top: 25px;
+        height: 120px;
+        width: 100%;
+      }
+      .counter-quantity{
+        font-size: 25px;
+      }
+      .flexbox img{
+        position: absolute;
+        width: 120px;
+        height: 100%;
+        left: 0px;
+      }
+      .flexbox p{
+        
+        position: absolute;
+        left: 150px;
+        font-size: 30px;
+        line-height: 30px;
+        top: 45px;
+        margin-bottom: 0%;
+      }
+      .flexbox .bi-trash{
+        position: absolute;
+        font-size: 50px;
+        top:21.5px;
+        position: 0;
+        right: 100px;
+      }
+
+      .flexbox a{
+        color: black;
+        text-decoration: none;
+      }
+      #checkout{
+        width: 40%;
+        margin-left: 30%;
+        margin-top: 5vh;
+        margin-bottom: 10vh;
+        background-color: transparent;
+        color: black;
+        border: 2px solid black;
+        text-decoration: none;
+
+      }
+      #checkout:hover{
+        background-color: black;
+        color: white;
+        
+      }
+      .descrizione-mobile{
+        display: none;
+      }
+      @media screen and (max-width:480px) {
+        .descrizione-mobile{
+        display: block !important;
+      }
+      .counter-quantity{
+        font-size: 45px;
+      }
+      .descrizione-desktop{
+        display: none;
+      }
+      .flexbox{
+        margin-top: 60px;
+      }
+        .flexbox p{
+        
+        position: absolute;
+        left: 150px;
+        font-size: 24px;
+        line-height: 20px;
+        top: 50px;
+        margin-bottom: 0%;
+      }
+      .flexbox .bi-trash{
+        position: absolute;
+        font-size: 20px;
+        top:0px;
+        position: 0;
+        right: 5px;
+      }
+      .bi-file-plus , .bi-file-minus{
+        font-size: 40px
+      }
+      }
+    </style>
+    
+  </head>
+  <body>  
+    <div class="box">
+      {% for elemento in elementi %}
+      <div class="flexbox"> 
+        {% for prodotto in catalogo %}
+       {% if prodotto ==  elemento.prezzo.product  %}
+        <img src="/static/{{ prodotto.slug }}.png" alt="">
+       {% endif %}
+      {% endfor %}
+        <p class="descrizione-desktop">        {{ elemento.prezzo.product }}  &nbsp;&nbsp; &nbsp;<a href="{% url 'add-quantity'   elemento.prezzo.product.pk %}">  <span class="bi bi-file-plus"  ></span></a>  <span style="font-size: 25px;">{{ elemento.quantity }}</span><a href="{% url 'dec-quantity'   elemento.prezzo.product.pk %}"> <span class="bi bi-file-minus"></span></a>
+      
+          
+        </p>
+        <p class="descrizione-mobile">
+          {{ elemento.prezzo.product }}  <br><br><br><a href="{% url 'add-quantity'   elemento.prezzo.product.pk %}">  <span class="bi bi-file-plus"  ></span></a>  <span class="counter-quantity" >{{ elemento.quantity }}</span><a href="{% url 'dec-quantity'   elemento.prezzo.product.pk %}"> <span class="bi bi-file-minus"></span></a>
+        </p>
+       <a href="{% url 'delete-from-cart'   elemento.prezzo.product.pk %}">  <i class="bi bi-trash"></i> </a>
+      </div>
+      
+      {% endfor %}
+     
+    </div>
+    
+    {% if sum > 0 %}
+    <p> subtotale : €{{ sum }}</p>
+    <!-- <a href="{% url 'create-checkout-session-cart' %}"class="btn btn-lg" id="checkout" role="button" aria-disabled="true">Checkout</a> -->
+    <a href="{% url 'cart-in-progress-view' %}"class="btn btn-lg" id="checkout" role="button" aria-disabled="true">Checkout</a>
+
+    
+
+    
+      
+    
+    {% endif %}
+
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+{% endblock content %}

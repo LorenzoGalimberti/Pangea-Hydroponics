@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+      
+      body{
+        margin: 0;
+        padding: 0;
+      }
+      .box{
+        position: relative;
+        height: 60vh;
+        margin-left: 5%;
+        width: 90%;
+        display: flex;
+      }
+        #card{
+           margin: 2%;
+          position: relative;
+            border: 0.2px solid grey;
+            width: 25%;
+           border-radius: 4%;
+            height: 100%;
+            padding: 0;
+        }
+        .image{
+            
+              position: absolute;
+              width: 100%;
+              height: 60%;
+        }
+        .image img{
+            border-radius: 4%;
+          position: relative;
+          height: 100%;
+          width: 100%;
+        }
+        .nome{
+          position: absolute;
+          top: 60%;
+          border: 1px solid black;
+          height: 12.5%;
+          width: 100%;
+        }
+        .nuovi-arrivi{
+          position: absolute;
+          height: 6%;
+          
+          width: 20%;
+          
+          
+          background: linear-gradient(#e66465, #9198e5);
+
+          color: white;
+          text-align: center;
+          border-radius: 5%;
+        }
+        .sconto{
+          position: absolute;
+          height: 6%;
+         
+          width: 30%;
+          margin-left: 70%;
+          color: white;
+          background-color: red;
+          text-align: center;
+
+          border-radius: 5%;
+        }
+        .prezzo{
+          position: absolute;
+          height: 5%;
+          width: 15%;
+          margin-left: 20%;
+          border: 1px solid black;
+          top: 72.5%;
+        }
+        .prezzofinale{
+          position: absolute;
+          top: 75%;
+          width: 30%;
+          height: 10%;
+          border: 1px solid black;
+          margin-left: 35%;
+        }
+        .add-to-cart{
+          position: absolute;
+          height: 5%;
+          top: 90%;
+          width: 60%;
+          margin-left: 20%;
+          border: 1px solid black;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+        {% for new_product in new_products %}
+        <div class="container" id="card">
+        
+          
+            <div class="image">
+              <img src="\static\{{new_product.slug}}.jpg" alt="">
+            </div>
+            {% if new_product.sconto > 0 %}
+            <div class="sconto"> <b>SAVE {{ new_product.sconto }}%</b> </div>
+            <div class="prezzo"><strike>{{ new_product.prezzo }} €</strike></div>
+            {% endif %}
+            <div class="nome">{{ new_product.nome }}</div>
+            {% if new_product.new_product is True %}           
+            <div class="nuovi-arrivi"><b>NEW</b></div>
+            {% endif %}
+            
+            <div class="prezzofinale">{{ new_product.prezzo_finale }} €</div>
+            <div class="add-to-cart"> add to cart</div>
+        </div>
+
+        {% endfor %}
+      
+    
+ 
+
+</div>
+    
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

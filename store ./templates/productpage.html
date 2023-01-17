@@ -1,0 +1,574 @@
+{% extends "base_1.html" %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{{ block.super }}| {{ prodotto }}{% endblock head_title %}
+{% load bootstrap_icons %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/productpage.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+ 
+  </head>
+
+  <body>
+    
+     <!-- breadcrumb-->
+   <br>
+   {% if prodotto.categoria == "vasi idroponici" %}
+   &nbsp; <a href="/" style="text-decoration: none; color: #007185;">Home &nbsp;</a>/&nbsp; <a href="{% url 'page-vasi' %}" style="text-decoration: none; color: #007185;">{{ prodotto.categoria }} &nbsp;</a>/&nbsp; {{ prodotto.nome }}
+   {% else %}
+   &nbsp;<a href="/" style="text-decoration: none; color: #007185;">Home &nbsp;</a>/&nbsp; <a href="{% url 'page-torri' %}" style="text-decoration: none; color: #007185;">{{ prodotto.categoria }} &nbsp;</a>/&nbsp; {{ prodotto.nome }}
+     {% endif %}  
+ <!-- ---------------------------------------------------->
+ <!-- ---------------------------------------------------->
+     <!--          FIRST LOOK                -->
+     <!--------------------------------------------------------->
+     <!-- ---------------------------------------------------->
+ <div class="first-look-container">
+     <!-- ---------------------------------------------------->
+     <!--          FIRST LOOK IMMAGINI               -->
+     <!--------------------------------------------------------->
+     <div class="immagini">
+          <img class="main" id="first-look-images" src="/static/{{ prodotto.slug }}.png" alt="">
+         <button class="first-look-images-buttons" id="button1" onclick="changeImage('/static/{{ prodotto.slug }}.png')"> <img src="/static/{{ prodotto.slug }}.png" alt=""></button>
+         <button class="first-look-images-buttons" id="button2" onclick="changeImage('/static/{{ prodotto.slug }}-2.png')">  <img src="/static/{{ prodotto.slug }}-2.png" alt=""></button>
+         <button class="first-look-images-buttons" id="button3" onclick="changeImage('/static/{{ prodotto.slug }}-3.png')">  <img src="/static/{{ prodotto.slug }}-3.png" alt=""></button>
+         
+         <!-- Javascrypt changing images-->
+         <script>
+             function changeImage(fileName){
+               let img=document.querySelector('#first-look-images');
+               img.setAttribute('src',fileName);
+             }
+            </script>
+     </div>
+     <div id="mobileproductimages" class="carousel slide" data-ride="carousel" data-interval="false" >
+        <ol class="carousel-indicators">
+            <li data-target="#mobileproductimages" data-slide-to="0" class="active"></li>
+            <li data-target="#mobileproductimages" data-slide-to="1"></li>
+            <li data-target="#mobileproductimages" data-slide-to="2"></li>
+          </ol>
+         <div class="carousel-inner">
+           <div class="carousel-item active">
+             <img class="d-block w-100" src="/static/{{ prodotto.slug }}.png" alt="First slide">
+           </div>
+           <div class="carousel-item">
+             <img class="d-block w-100" src="/static/{{ prodotto.slug }}-2.png" alt="Second slide">
+           </div>
+           <div class="carousel-item">
+             <img class="d-block w-100" src="/static/{{ prodotto.slug }}-3.png" alt="Third slide">
+           </div>
+         </div>
+         <a class="carousel-control-prev" href="#mobileproductimages" role="button" data-slide="prev">
+           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+           <span class="sr-only">Previous</span>
+         </a>
+         <a class="carousel-control-next" href="#mobileproductimages" role="button" data-slide="next">
+           <span class="carousel-control-next-icon" aria-hidden="true"></span>
+           <span class="sr-only">Next</span>
+         </a>
+       </div>
+    
+     <!-- ---------------------------------------------------->
+     <!--          FIRST LOOK DESCRIZIONE               -->
+     <!--------------------------------------------------------->
+     <div class="descrizione" >
+ 
+        {% if prodotto.categoria == 'vasi idroponici' %}
+        <h5><a href="{% url 'page-vasi' %}" style="text-decoration: none; color: grey;">{{ prodotto.categoria }}</a></h5>
+        {% endif%}
+
+        {% if prodotto.categoria == 'torri idroponiche' %}
+        <h5><a href="{% url 'page-torri' %}" style="text-decoration: none; color: grey;">sistemi idroponici</a></h5>
+        {% endif%}
+        
+         <h2>{{ prodotto.nome }}</h2>
+         {% if counter > 0 %}
+         {% for i in media_voto_round %}
+                         <i class="bi bi-star-fill"></i>
+                         {% endfor %}
+                         {% if media_voto_round_value <= 4 %}
+                         {% if media_voto_decimal > 0.7 %}
+                         <i class="bi bi-star-fill"></i>
+                         {% elif media_voto_decimal > 0.2 %}
+                         <i class="bi bi-star-half "></i>
+                         {% else %}
+                         <i class="bi bi-star "></i>
+                         {% endif %}
+                         {% endif %}
+                         
+                         {% for i in empty_star %}
+                         <i class="bi bi-star "></i>
+                         {% endfor %} &nbsp;<small><a href="#recensioni" style="color: #007185; text-decoration:none;">{{ counter }} voti</a></small>
+                         
+         {% endif %}
+         <br><hr><br>
+         
+        
+         <h4 style="color: grey;">
+           
+            <strong style="font-size: 40px;">€{{ prodotto.prezzo_finale }}</strong>
+            {% if prodotto.sconto > 0  %}
+            <s style="font-size: 20px; color: rgb(81, 80, 80);">€{{ prodotto.prezzo }}</s>&nbsp;
+        {% endif %}
+        {% if prodotto.sconto > 0  %}
+        
+                <span class="btn btn-danger  " id="btn-sconto" ><b>- {{ prodotto.sconto }}%</b></span>
+        {% endif %}
+        </h4>
+        
+         <br>
+         <hr>
+         <br>
+      
+             <!-- add to cart / shop now-->
+             <br>
+             {% for price in prices %}
+ 
+             <div>
+                 {% if request.user.is_authenticated %}
+                 <form action="{% url 'create-checkout-session' price.id %}" method="POST">
+                     {% csrf_token %}
+                     <button type="submit" class="btn btn-primary w-100" style="background-color:#17a2b8 ;border: 0px;">Acquista Ora</button>
+                 </form>
+                 <form action="{% url 'add-to-cart' price.product.pk %}" method="POST">
+                    {% csrf_token %}
+                    <br>
+                    <button type="submit" class="btn btn-primary w-100" style="background-color:#90df89 ;border: 0px;">Aggiungi al Carrello</button>
+                </form>
+                 {% else %}
+                 <form action="{% url 'login'  %}" method=>
+                    
+                    <button type="submit" class="btn btn-primary w-100" style="background-color:#17a2b8 ; border: 0px;">Acquista Ora</button>
+                </form>
+                 {% endif %}
+             </div>
+
+             {% endfor %}
+             <br><br>
+            
+ 
+                 
+                 
+             <!-- rapida descrizione-->
+             <div class="basic-description">
+                <h6> <b>spedizione</b> : {{ prodotto.spedizione }} giorni</h6> 
+                <br> 
+                 <h6>Descrizione</h6>
+                    {{ prodotto.descrizione|linebreaks }}                 
+                 
+             </div>
+     </div>
+ </div>
+ 
+ 
+ 
+ <!-----------------  potrebbe piacerti -------------------------->
+ <!---------------------------------------------------------->
+ <br><br><hr>
+ <h4> <b>Prodotti Correlati</b></h4><br>
+     <div class="you-also-like">
+
+         <div class="you-also-like-container">
+             <!-- for loop where insert all the products in the same category for now-->
+             {% for prodotto in also_like %}
+             <a href="/catalogo/{{ prodotto.slug }}/"  class="shop-card" style="text-decoration: none;">
+                 <div class="image">
+                   <img src="/static/{{ prodotto.slug }}.png" alt="">
+                 </div>
+                 
+                  <h6 style="display: inline-block; color: #007185; margin-top: 6px; font-size: 20px;" >{{ prodotto.nome }}</h6> <br>
+                 
+                  {% if prodotto.media_recensioni >= 1 and prodotto.media_recensioni <= 1.2 %}
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                    <i class="bi bi-star"></i>
+                    <i class="bi bi-star"></i>
+                    <i class="bi bi-star"></i>
+                  {% endif %} 
+                  {% if prodotto.media_recensioni > 1.2 and prodotto.media_recensioni <= 1.7 %}
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star"></i>
+
+                  {% endif %} 
+                  {% if prodotto.media_recensioni > 1.7 and prodotto.media_recensioni <= 2.2 %}
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star"></i>
+
+                  {% endif %} 
+                  
+                  {% if prodotto.media_recensioni > 2.2 and prodotto.media_recensioni <= 2.7 %}
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star"></i>
+
+                  {% endif %} 
+                  {% if prodotto.media_recensioni > 2.7 and prodotto.media_recensioni <= 3.2 %}
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star"></i>
+
+                  {% endif %} 
+                  {% if prodotto.media_recensioni > 3.2 and prodotto.media_recensioni <= 3.7 %}
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <i class="bi bi-star"></i>
+
+                  {% endif %} 
+                  {% if prodotto.media_recensioni > 3.7 and prodotto.media_recensioni <= 4.2 %}
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <i class="bi bi-star"></i>
+                  {% endif %} 
+                  {% if prodotto.media_recensioni > 4.2 and prodotto.media_recensioni <= 4.7 %}
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  {% endif %} 
+                  {% if prodotto.media_recensioni > 4.7  %}
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  {% endif %} 
+                  {% if prodotto.numero_recensioni > 0 %}
+                  <span>{{ prodotto.numero_recensioni }}</span> &nbsp;&nbsp;
+                  {% endif %}
+                   {% if prodotto.new_product == True %}
+                   <span class="nuovi_prodotti" style="background-color:	#c030c0 ; text-align: center; color:	white; border-radius :22px;  "><small style="margin: 3.5%; "><b>NEW</b></small></span>
+                   {% endif %}
+                   <br>
+                   {% if prodotto.sconto != 0 %}
+                    <br>
+                        <p style="margin-bottom:0 ; text-decoration: none ;">  <span style="font-size:21px ; margin-bottom: 0; color: #485e75;"><b>€{{ prodotto.prezzo_finale }}</b></span><span style="font-size:12px;color:#485e75;"> <del>€{{ prodotto.prezzo }}</del></span></p>
+                    <p  class="btn btn-danger"><b>-{{ prodotto.sconto }}%</b></p>
+                    {% else %}
+                    <br>
+                    <p ><span style="font-size:21px ; margin-bottom: 0; color: #485E75;"><b>€{{ prodotto.prezzo_finale }}</b></span></p>
+                    {% endif %}
+                
+               </a>  
+             {% endfor %}
+         </div>
+     </div>
+     <br>
+
+   <!-- potrebbe piacerti mobile--> 
+   
+  
+   <div id="carouselmobilealsolike" class="carousel slide " data-ride="carousel" data-interval="false" data-touch="true" >
+
+
+  
+    
+    <div class="carousel-inner">
+      {% for prodotto in also_like %}
+      <div  class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}" style="font-size: 20px">
+        <div class="item__third">
+            
+          <a href="/catalogo/{{ prodotto.slug }}/" class="card" style="width: 100%; border: none; text-decoration: none; color:#485E75 ;">
+            <img src="/static/{{ prodotto.slug }}.png" class="d-block w-100" alt="" style="border-radius: 22px;">
+            <div class="card-body">
+              <h5 class="card-title">{{ prodotto.nome }}</h5>
+              <p class="card-text">
+                    
+                €{{ prodotto.prezzo_finale }}
+                {% if prodotto.sconto > 0 %}
+                <span><s style="font-size: 14px;">€{{ prodotto.prezzo }} </s></span>
+                {% endif %}
+              </p>
+              {% if prodotto.sconto > 0 %}
+            <div class="btn btn-danger"> <b>-{{ prodotto.sconto }}%</b></div>
+            {% endif %}
+              <p style="color: black ;"><small><b>{{ prodotto.categoria }}</b></small></p>
+              
+            </div>
+          </a>
+         
+          
+        
+        </div>
+        
+          
+   
+      </div>
+      {% endfor %}
+     
+    </div>
+    <a class="carousel-control-prev" href="#carouselmobilealsolike" role="button" data-slide="prev" ">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselmobilealsolike" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    
+  
+  </div>
+ <!---------------------------------------------------------->
+ <!-----------------  descrizione finale -------------------------->
+ <!---------------------------------------------------------->
+  
+ {% if prodotto.slug == 'vaso-pangea-1' %}
+ {% include 'vaso-pangea-1.html' %}
+  {% endif %}
+  {% if prodotto.slug == 'vaso-pangea-2' %}
+  {% include 'vaso-pangea-2.html' %}
+   {% endif %}
+{% if prodotto.slug == 'vaso-pangea-3' %}
+{% include 'vaso-pangea-3.html' %}
+{% endif %}
+
+ 
+     <!---------------------------------------------------------->
+     <!-----------------  RECENSIONI   -------------------------->
+     <!---------------------------------------------------------->
+    <br><br><hr><br>
+    
+     
+     <div class="recensioni" id="recensioni">
+         <div class="recensioni-content" id="statistiche-recensioni">
+             <h5><b>Statistiche Recensioni </b></h5>
+             
+                 {% for i in media_voto_round %}
+                 <span class="bi bi-star-fill "></span>
+                 {% endfor %}
+                 {% if media_voto_round_value <= 4 %}
+                 {% if media_voto_decimal > 0.7 %}
+                 <span class="bi bi-star-fill"></span>
+                 {% elif media_voto_decimal > 0.2 %}
+                 <span class="bi bi-star-half "></span>
+                 {% else %}
+                 <span class="bi bi-star "></span>
+                 {% endif %}
+                 {% endif %}
+                 
+                 {% for i in empty_star %}
+                 <span class="bi bi-star "></span>
+                 {% endfor %} 
+                 {% if counter > 0 %}
+                 &nbsp; <big>{{ media_voto }} su 5</big>
+                 <p ><small> {{ counter }} Valutazioni Totali</small> </p>
+                 {% endif %}
+                 <div class="progress-bars">
+                     <div class="progress-bar">
+                         <div class="progress-bar-value-stars">  5 stelle</div>
+                         <div class="progress-bar-bar"> 
+                             <div class="progress-bar-bar-percentage" style="width: {{ five_star }}% ;"></div> </div>
+                         <div class="progress-bar-value-percentage">{{ five_star }}%</div>
+                     </div>
+                     <div class="progress-bar">
+                         <div class="progress-bar-value-stars"> 4 stelle</div>
+                         <div class="progress-bar-bar">
+                             <div class="progress-bar-bar-percentage" style="width: {{ four_star }}% ;"></div>
+                         </div>
+                         <div class="progress-bar-value-percentage">{{ four_star }}%</div>
+                     </div>
+                     <div class="progress-bar">
+                         <div class="progress-bar-value-stars">3 stelle</div>
+                         <div class="progress-bar-bar">
+                             <div class="progress-bar-bar-percentage" style="width: {{ three_star }}% ;"></div>
+                         </div>
+                         <div class="progress-bar-value-percentage">{{ three_star }}%</div>
+                     </div>
+                     <div class="progress-bar">
+                         <div class="progress-bar-value-stars">2 stelle</div>
+                         <div class="progress-bar-bar">
+                             <div class="progress-bar-bar-percentage" style="width: {{ two_star }}% ;"></div>
+                         </div>
+                         <div class="progress-bar-value-percentage">{{ two_star }}%</div>
+                     </div>
+                     <div class="progress-bar">
+                         <div class="progress-bar-value-stars">1 stella</div>
+                         <div class="progress-bar-bar">
+                             <div class="progress-bar-bar-percentage" style="width: {{ one_star }}% ;"></div>
+                         </div>
+                         <div class="progress-bar-value-percentage">{{ one_star }}%</div>
+                     </div>
+                 </div>
+                <hr><br>
+                <h5><b>Recensici questo prodotto</b></h5>
+                <br>
+                <a class="btn btn-info" style="width: 100%;" href="/catalogo/{{ prodotto.slug }}/recensione/" role="button" > Scrivi una recensione</a>
+                <br><br><hr>
+         </div>
+         <div class="recessioni-content" id="testo-recensioni">
+             <h5><b>Recensioni dei Clienti</b></h5>
+             {% if counter > 0 %}
+             <div class="dropdown">
+                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Ordina Per
+                 </button>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <form action="" method="get">
+                         <input class="dropdown-item" type="submit" value="1 Stella" name="1stella">
+                         <input class="dropdown-item" type="submit" value="2 Stelle" name="2stella">
+                         <input class="dropdown-item" type="submit" value="3 Stelle" name="3stella">
+                         <input class="dropdown-item" type="submit" value="4 Stelle" name="4stella">
+                     </form>
+                         
+                 </div>
+               </div>
+             <div class="recensioni-blocco">
+                
+                 {% for recensione in recensioni  %}
+ 
+                 
+                 <div class="recensioni-elemento">
+                     
+                     <p style="margin-bottom: 0;margin-top: 2.5vh;"> <i class="fas fa-user-alt	fa-lg"></i>&nbsp;<small>{{ recensione.user }}</small>
+                     <br>
+                     <small style="color: grey ;">recensito il {{ recensione.data }}</small> </p>
+                     
+                       {% if recensione.valutazione is 1  %}
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star"></i>
+                       <i class="bi bi-star"></i>
+                       <i class="bi bi-star"></i>
+                       <i class="bi bi-star"></i>
+                       {% endif %}
+                       {% if recensione.valutazione is 2  %}
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                        <i class="bi bi-star"></i>
+                       {% endif %}
+                       {% if recensione.valutazione is 3  %}
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star"></i>
+                       <i class="bi bi-star"></i>
+
+                       {% endif %}
+                       {% if recensione.valutazione is 4  %}
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star"></i>
+
+                       {% endif %}
+                       {% if recensione.valutazione is 5  %}
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star-fill"></i>
+                       <i class="bi bi-star-fill"></i>
+
+                       {% endif %} 
+                       <b>{{ recensione.titolo }}</b>
+                       
+                       
+                       <p> {{ recensione.contenuto }}</p>
+                       <!-- script per ingrandire le immagini-->
+                        <!--
+                                {% if recensione.immagine_1 != '' %}
+                       <a href="/{{ recensione.immagine_1 }}" target="_blank"  ><img src="/{{ recensione.immagine_1 }}" class="thumbnail" ></a>
+                       
+                       {% endif %}
+                       {% if recensione.immagine_2 != '' %}
+                       <img src="/{{ recensione.immagine_2 }}" alt="" class="thumbnail" >
+                       {% endif %}
+                       {% if recensione.immagine_3 != '' %}
+                       <img src="/{{ recensione.immagine_3 }}" alt="" class="thumbnail" >
+                       {% endif %}
+                        -->
+                       
+                       
+                       <div style="margin-bottom: 2.5vh ;"></div>
+                 </div>
+                
+                 {% endfor %}
+             </div>
+             {% else %}
+             <br><br>
+             <p> Non è presente alcuna recensione</p>
+             <p><a href="/catalogo/{{ prodotto.slug }}/recensione/">scrivi una recensione</a></p>
+             {% endif %}
+         </div>
+     </div> 
+    
+
+     
+      <!--Touch Swipe-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js'></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script>src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"</script>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+  <script>
+    $('.carousel-item', '#carouselmobilealsolike').each(function(){
+var next = $(this).next();
+if (! next.length) {
+next = $(this).siblings(':first');
+}
+next.children(':first-child').clone().appendTo($(this));
+}).each(function(){
+var prev = $(this).prev();
+if (! prev.length) {
+prev = $(this).siblings(':last');
+}
+prev.children(':nth-last-child(2)').clone().prependTo($(this));
+});
+  </script>
+
+<script>
+  $('.carousel-item', '#carouselmobilenew').each(function(){
+var next = $(this).next();
+if (! next.length) {
+next = $(this).siblings(':first');
+}
+next.children(':first-child').clone().appendTo($(this));
+}).each(function(){
+var prev = $(this).prev();
+if (! prev.length) {
+prev = $(this).siblings(':last');
+}
+prev.children(':nth-last-child(2)').clone().prependTo($(this));
+});
+</script>
+       
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+
+</body>
+</html>
+
+{% endblock content %}
