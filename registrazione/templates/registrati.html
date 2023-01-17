@@ -1,0 +1,56 @@
+{% extends "base_1.html" %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ block.super }} | Log in {% endblock head_title %}
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        form{
+            margin-top: 10vh;
+            margin-bottom: 15vh;
+        }
+        form button{
+            margin-top: 5vh;
+            width: 20%;
+            margin-left: 40%;
+        }
+        @media screen and (max-width:480px){
+            
+            form{
+                margin: 0;
+            }
+            .form-group{
+                width: 90%;
+                margin: 0;
+                margin:5%;
+            }
+            form button{
+                width: 50%;
+                margin-left: 25%;
+                margin-top: 10%;
+                margin-bottom: 20%;
+            }
+        }
+    </style>
+   
+    
+  </head>
+  <body>
+    
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success" > crea account</button>
+</form>
+
+  </body>
+</html>
+ 
+    {% endblock %}
+
+
