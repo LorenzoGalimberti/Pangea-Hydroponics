@@ -1,0 +1,108 @@
+#dropdownMenuButton{
+    background-color: rgb(152, 232, 32);
+    border: 0px;
+    color: black;
+  }
+  #torriordinaper{
+    margin-left: 85%;
+  }
+  .shop-container-mobile{
+    display: none;
+  }
+  .immagine{
+      width: 95%;
+      height: 30vh;
+      margin-left: 2.5%;
+      background-color: azure;
+  }
+
+  .shop-container{
+      margin-top: 10vh;
+      margin-bottom: 10vh;
+      width: 96%;
+      margin-left: 2%;
+      max-height: 10000vh;
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .shop-card{
+      height: 75vh;
+      width: 23%;
+      margin: 1%;
+      display: block;
+  }
+  .shop-card .image{
+    width: 100%;
+    height: 65%;
+    border-radius: 22px;
+  }
+  .shop-card .image img:hover{
+   
+    transform: scale(1);
+    transition: 0.5s;
+  }
+  .shop-card .image img{
+    margin: 1.5%;
+    width: 97%;
+    height: 97%;
+    transform: scale(0.9);
+
+  }
+  .checked{
+      color: #FF9900;
+  }
+  .fa-star-half-full{
+      color: #FF9900;
+      
+      
+  }
+  .bi-star{
+    color: #485e75;
+  }
+  .bi-star-half{
+    color: #485e75;
+  }
+  .bi-star-fill{
+    color: #485e75;
+  }
+  /* media viewport for cellphone*/
+  @media screen and (max-width:480px) {
+    #torriordinaper{
+      margin-left: 60% ;
+      width: 25%;
+    }
+    .shop-container{
+      display: none;
+    }
+    .shop-container-mobile{
+      min-height: 50vh;
+      width: 100%;
+      margin: 0;
+      
+      display: flex !important;
+     
+      -webkit-flex-wrap: wrap;
+
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+    .shop-container-mobile .card{
+     height: 50vh;
+      width: 50%;
+      margin: 0%;
+      padding: 4%;
+      border: 0px;
+      text-decoration: none;
+      text-align: center;
+      color: #0f1111;
+      
+    }
+    .shop-container-mobile .card img{
+      border-radius: 22px;
+     height: 60%;
+    }
+    .shop-card .image img{
+   
+    transform: scale(1);
+  }
+  }

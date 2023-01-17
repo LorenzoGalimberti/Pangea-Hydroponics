@@ -1,0 +1,471 @@
+body{
+    font-family: 'Poppins', sans-serif;
+
+   }
+    .first-look-container{
+        width: 97%;
+        margin-left: 1.5%;
+        min-height: 97.5vh;
+        margin-top: 2.5vh;
+        display: flex;
+    }
+    /* bradcrumb*/
+    .breadcrumb{
+        color: grey;
+        background-color: transparent;
+        margin-left: 5%;
+    }
+    /*immagini della product page*/
+     .first-look-container .immagini{
+        height: 120vh;
+        width:60% ;
+        
+    }
+    #mobileproductimages{
+        display: none;
+    }
+    .main{
+        width: 100%;
+        height: 100vh;
+    }
+    .main img{
+        width: 100%;
+        height: 100%;
+    }
+    .side-immagini{
+        margin-top: 5vh;
+        width: 88vh;
+        display: flex;
+        height: 20vh;
+        flex-grow: 1;
+    }
+    .side-immagine{
+        margin: 1vh;
+        width: 20vh;
+    }
+    .first-look-images-buttons{
+        margin-right: 5vh;
+        margin-top: 10vh;
+    height: 20vh;
+    width: 20vh;
+    border: 0px;
+    background: transparent;
+}
+ .first-look-images-buttons img{
+    width: 100%;
+    height: 100%;
+ }
+    /* descrizione della first-view */
+    #btn-sconto{
+        padding: 4px 8px;
+        font-size: larger;
+        margin-left: 100px;
+        
+        border: 0px;
+        color: white;
+    }
+        .first-look-container .descrizione{
+        margin-right: 5%;    
+        width: 40%;
+        margin-left: 10%;
+        height: 1000px;
+    }
+
+    .first-look-cart{
+        position: relative;
+        width: 100%;
+        height: 8vh;
+        border: 1px solid black;
+
+    }
+    .first-look-cart p{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        
+
+    }
+    .first-look-cart:hover{
+        background-color: #212b36;
+        color: white;
+    }
+    
+    .first-look-shop-now{
+        position: relative;
+        width: 100%;
+        height: 8vh;
+        border: 1px solid black;
+
+
+    }
+    .first-look-shop-now p{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        
+
+    }
+    .first-look-shop-now:hover{
+        background-color: #445a72;
+        color: white;
+        
+    }
+    /*basic description*/
+    .basic-description::-webkit-scrollbar{
+    width: 0;
+  }
+    .basic-description{
+        overflow-x: scroll;
+        max-height: 65vh;
+        
+    }
+    
+    /* potrebbe piacerti*/
+   
+    .you-also-like{
+        width: 100%;
+        min-height: 70vh;
+        position: relative;
+    }
+    .you-also-like-container::-webkit-scrollbar{
+        width: 0;
+    }
+    .you-also-like-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        position: absolute;
+        overflow-x: auto;
+    }
+    .you-also-like-container .btn-danger{
+    padding: 2px 6px;
+    font-size: 15px;
+    color: white;
+    margin-top: 10px;
+  }
+    .shop-card{
+       min-width: 21.6%;
+        margin: 1%;
+
+    }
+    
+    .shop-card .image{
+      transform: scale(0.9);
+      height: 65%;
+      border-radius: 20px;
+    }
+    .shop-card .image:hover{
+        transition: 0.5s;
+transform: scale(1);
+}
+    .shop-card .image img{
+      
+      width: 100%;
+      height: 100%;
+    }
+    .checked{
+        color: #FF9900;
+    }
+    .fa-star-half-full{
+        color: #FF9900;
+        
+        
+    }
+
+    /*shut down mobile also like*/
+    #carouselmobilealsolike{
+        display: none;
+    }
+    
+    /* funzionalita*/
+    .funzionalità{
+        position: relative;
+        background-color: blue;
+        width: 100%;
+        height: 1000px;
+    }
+
+    /*descrizione*/
+
+    .descrizione-finale{
+        
+        margin-top: 5vh;
+        width: 97%;
+        margin-left: 1.5%;
+        min-height: 250vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .descrizione-finale-block{
+        display: flex;
+        margin: 1%;
+        flex-grow: 1;
+        height: 33%;
+        margin-top: 5%;
+    }
+    .descrizione-finale-block-immagine{
+        position: relative;
+        width: 41.2%;
+    }
+    .descrizione-finale-block-immagine img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .descrizione-finale-block-testo{
+        max-width: auto;
+        width: 58.8%;
+        margin-left: 5%;
+    }
+    .fa-star-half{
+        
+        color:#FF9900;
+    }
+
+    .fa-star{
+        color: grey;
+    }
+    .checked {
+    color: #FF9900;
+    }
+    /*  RECENSIONI  */
+    .recensioni{
+        display: flex;
+        min-height: 30vh;
+        max-height: 1000vh;
+        width: 97%;
+        margin-left: 1.5%;
+        margin-bottom: 10vh;
+    }
+    .recensioni-content{
+        
+        flex-grow: 1;
+    }
+    #statistiche-recensioni{
+       
+        width: 30%;
+    }
+    #testo-recensioni{
+        
+        margin-left: 5%;
+        width: 70%;
+        
+    }
+    .progress-bars{
+        display: flex;
+        width: 100%;
+        margin: 0;
+        height: 156px;
+        
+        flex-direction: column;
+    }
+    .progress-bar{
+        
+        color: black;
+        background-color: transparent;
+        margin-bottom: 1%;
+        flex-grow: 1;
+        
+        display: flex;
+        flex-direction: row;
+    }
+    .progress-bar-value-stars{
+        margin-left: 0;
+        height: 100%;
+        width: 25%;
+       
+    }
+    .progress-bar-value-percentage{
+        
+        height: 100%;
+        width: 15%;
+       
+    }
+    .progress-bar-bar{
+        background-color: whitesmoke;
+        border-radius: 5px;
+        height: 100%;
+        width: 60%;
+        border: 1px solid grey;
+        overflow: hidden;
+    }
+    .progress-bar-bar-percentage{
+        width: 10%;
+        height: 100%;
+        border-top-left-radius: 0%;
+        background-color: #485E75;
+        border-top-left-radius: 2.5px ;
+        border-bottom-left-radius: 2.5px ;
+        
+    }
+    .scrivi-recensione{
+       width: 20vw;
+        height: 10vh;
+        border: 1px solid black;
+    }
+
+    .recensioni-blocco{
+       
+        margin-top: 5%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .recensioni-elemento{
+        position: relative;
+        min-height: 10vh;    
+    }
+    .recensioni-star-utente{
+        position: absolute;
+       
+    }
+    .thumbnail{
+        height:60px ; 
+        width:60px;
+    }
+    .bi-star-fill,.bi-star,.bi-star-half{
+        color: #485E75;
+    }
+    /* MOBILE VIEW*/
+    @media screen and (max-width : 480px) {
+        .shop-card .image{
+      transform: scale(1);
+      
+    }
+    
+    #btn-sconto{
+        padding: 2px 4px;
+        font-size: large;
+        margin-left: 10px;
+        
+        border: 0px;
+        color: white;
+    }
+        .first-look-container{
+            flex-direction: column;
+            display: block;
+            
+        }
+        .first-look-container .immagini{
+            display: none;
+        }
+        .first-look-container .descrizione{
+            width: 100%;
+            margin: 0%;
+        }
+        #mobileproductimages{
+            display: block;
+            height: 60vh;
+            margin-bottom: 15vh;
+
+        }
+        #mobileproductimages .carousel-item img{
+            height: 55vh;
+        }
+        .carousel-indicators {
+            z-index: 1;
+            bottom: -2.5375rem;
+}
+.carousel-indicators li {
+    margin-top: 5px;
+    width: 10px;
+height: 10px;
+    background-color: rgb(85, 82, 82);
+    border-radius: 100%;
+}
+        .basic-description{
+            min-height: 40vh;
+        }
+        .recensioni{
+            flex-direction: column;
+        }
+        #statistiche-recensioni,#testo-recensioni{
+            margin-left: 0;
+            width: 100%;
+        }
+        .you-also-like{
+            display: none;
+        }
+        #carouselmobilealsolike{
+            display: inline-block;
+            position: relative;
+        }
+        .thumbnail{
+        height:40px ; 
+        width:40px;
+    }
+    /*potrebbe piacerti mobile*/
+    #carouselmobilealsolike {
+overflow: hidden;
+text-align: center;
+}
+#carouselmobilealsolike .item__third:first-child,
+#carouselmobilealsolike .item__third:last-child {
+display: none;
+text-decoration: none;
+}
+.item__third .card{
+height: 60vh;
+}
+.item__third img{
+height: 30vh;
+padding: 2%;
+padding-left: 4%;
+}
+
+#carouselmobilealsolike .carousel-indicators {
+margin-right: 25%;
+margin-left: 25%;
+}
+#carouselmobilealsolike .carousel-control-prev,
+#carouselmobilealsolike .carousel-control-next {
+
+width: 25%;
+z-index: 11;
+/* .carousel-caption has z-index 10 */
+}
+#carouselmobilealsolike .carousel-inner {
+width: 150%;
+left: -25%;
+
+}
+#carouselmobilealsolike .carousel-item-next:not(.carousel-item-left),
+#carouselmobilealsolike .carousel-item-right.active {
+-webkit-transform: translate3d(33%, 0, 0);
+transform: translate3d(33%, 0, 0);
+}
+#carouselmobilealsolike .carousel-item-prev:not(.carousel-item-right),
+#carouselmobilealsolike .carousel-item-left.active {
+-webkit-transform: translate3d(-33%, 0, 0);
+transform: translate3d(-33%, 0, 0);
+}
+#carouselmobilealsolike .item__third {
+display: block !important;
+float: left;
+position: relative;
+/* captions can now be added */
+width: 33.33333333%;
+}
+
+#carouselmobilealsolike .item__third .btn{
+width: 40%;
+
+font-size: 18px;
+padding: 4px 4px;
+top: 2rem;
+}
+    
+    #mobileproductimages .carousel-indicators {
+            z-index: 1;
+    bottom: -4.375rem;
+}
+#mobileproductimages .carousel-indicators li {
+    margin-top: 5px;
+    width: 10px;
+height: 10px;
+    background-color: rgb(85, 82, 82);
+    border-radius: 100%;
+}
+}
