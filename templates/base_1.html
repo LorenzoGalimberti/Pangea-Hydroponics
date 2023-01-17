@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- libreria per lo star rating-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!--link per font-->
+     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/static/pangea_logo4.0_trasparent.png" type="image/icon type">
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    
+
+       
+    <!-- TITOLI DINAMICI -->
+    <title>{% block head_title %}Pangea {% endblock head_title %}</title>
+    <style>
+         body{
+          font-family: 'Poppins', sans-serif;
+
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-brand img{
+          
+    width: 40px;
+    height: 40px;
+
+  }
+  .offerte{
+                      text-align: center;
+                       height: 5vh;
+                      background-color: white;
+                      
+                      background-color: black;
+                      color: white;
+                     }
+        #navbar{
+         z-index: 2;
+          position: sticky;
+          top: 0;
+          width: 100%;
+          min-height: 10vh;
+          font-family: 'Poppins', sans-serif;
+
+        }
+
+        
+        
+         /* endpage  */
+         .endpage{
+        height: 70vh;
+        width: 100%;
+        background-color: whitesmoke;
+        display: flex;
+        border-bottom: 1px solid grey;
+    }
+    .sezione1{
+     
+      margin-top: 2%;
+     text-align: center;
+      flex-grow: 1;
+      height: 100%;
+    }
+    .sezione2{
+     
+      margin-top: 2%;
+     text-align: center;
+      flex-grow: 2;
+      height: 80%;
+    }
+    .social-links{
+      
+      width:200px;
+      height: 8vh;
+      left:35%;
+      display: flex;
+
+    }
+    .social-link{
+      position: relative;
+      flex-grow: 1;
+     margin: 4%;
+     border-radius: 20%;
+
+    }
+  .social-link img{
+  width: 100%;
+    height: 100%;
+    
+  }
+
+  .form-group{
+    width: 60%;
+    margin-left: 20%;
+  }
+  .copyright{
+    
+    height: 20vh;
+    width: 100%;
+    background-color: whitesmoke;
+    display: flex;
+  }
+  .copyright .profile{
+    width: 50%;
+    position: relative;
+  }
+  .copyright .profile .profileinner{
+    position: absolute;
+    border-radius: 22px;
+    padding: 2%;
+    margin-top: 4%;
+    margin-left: 5%;
+    width: 50%;
+    height: 60%;
+    background-color: #a9a9a99e;
+  }
+  
+  .copyright .cards{
+    width: 50%;
+    position: relative;
+  }
+  .copyright .cards .box{
+    position: absolute;
+    width: 40%;
+    height: 28%;
+    margin-top: 5%;
+    margin-left: 50%;
+    display: flex;
+  }
+
+  .copyright .cards .box .payment{
+    margin:2.2%;
+    margin-top: 0;
+    width: 50px;
+    height: 30px;
+  }
+  .copyright .cards .box .payment img{
+    width: 100%;
+    height: 100%;
+  }
+  /* animations*/
+  .shop-card .image{
+    overflow: hidden;
+  }
+  .shop-card img{
+    overflow: hidden;
+    transition: all .3s ease-in-out;
+  }
+  .shop-card .image img:hover{
+    
+    transform: scale(1);
+  }
+  .shop-card .nuovi_prodotti b{
+    
+    
+  }
+  /*MEDIA QUERIEa*/
+  @media screen and (max-width : 480px) {
+   
+    #navbarSupportedContent{
+    margin-bottom: 10vh;
+      z-index: 2 !important;
+      
+    }
+    .endpage{
+        height: 170vh;
+        width: 100%;
+        background-color: whitesmoke;
+        display: flex;
+        border-bottom: 1px solid grey;
+        flex-direction: column;
+    }
+    .endpage form .btn{
+      width: 25%;
+      margin-left: 37.5%;
+    }
+    .endpage form{
+      margin-bottom: 5vh;
+    }
+
+    .sezione1{
+     
+     margin-top: 6%;
+   text-align: left;
+   padding-left: 2%;
+     flex-grow: 1;
+     height: 100%;
+  
+     padding-bottom: 6%;
+   }
+
+   .sezione2{
+    
+     margin-top: 2%;
+     text-align: left;
+   padding-left: 2%;
+     flex-grow: 2;
+     height: 80%;
+   }
+    /* bottompage*/
+    .social-links{
+                height: 5vh;
+                width: 15vh;
+                margin-left: 0;
+            }
+    /*copyright*/
+    .copyright{
+      height: 40vh;
+      flex-direction: column-reverse;
+      
+    } 
+    .copyright .profile{
+      width: 100%;
+      min-height: 20vh;
+    }      
+    .copyright .cards{
+      width: 100%;
+      height: 20vh;
+    } 
+    .copyright .cards .box{
+      width: 70%;
+      margin: 15%;
+    }
+    .copyright .profile .profileinner{
+      width: 90%;
+      margin-left: 5%;
+      height: 80%;
+    }
+    .copyright .profile .profileinner p{
+     padding: 5px 10px;
+     font-size: 20px;
+    }
+  }
+    </style>
+  </head>
+  <body>
+    <div class="offerte"> SALDI</div>
+    
+    
+   <!-- navbar new -->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+    <a class="navbar-brand" href="/"><img src="/static/pangea_logo4.0_trasparent.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        
+        <li class="nav-item dropdown "  >
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Catalogo
+          </a>
+          <div class="dropdown-menu" id="dropmenu" aria-labelledby="navbarDropdown"   style=" z-index: auto;">
+            <a class="dropdown-item" href="{% url 'page-vasi' %}">Vasi Idroponici</a>
+            <a class="dropdown-item" href="{% url 'page-torri' %}">Sistemi Idroponici</a>
+            <a class="dropdown-item" href="#">Accessori</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'offerte' %}">Offerte</a>
+            <a class="dropdown-item" href="{% url 'nuovi-prodotti' %}">Nuovi Arrivi</a>
+            
+          </div>
+        </li>
+        {% if request.user.is_staff %}
+        <li class="nav-item" style="padding: 8px; background-color: greenyellow;color: black;border-radius: 22px;"> <a  href="{% url 'admin-view' %}" style="color: black;text-decoration: none;">Admin Page</a></li>
+
+            
+            {% endif %}
+        
+      </ul>
+
+      <ul class="navbar-nav ml-auto"> 
+        {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown mr-2">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ request.user }}  &nbsp;<i class="fas fa-user-alt	"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/accounts/logout/">Logout</a>
+            <a class="dropdown-item" href="">Newsletter</a>
+            <a class="dropdown-item" href="/accounts/password_reset/">Cambio password</a>
+       
+          </div>
+        </li>
+        <li class="nav-item mr-2">
+          <a class="nav-link active" aria-current="page" href="{% url 'cart-view' request.user %}"> Carrello &nbsp;
+            {% if somma  > 0 %}
+            <i class="fa fa-shopping-cart " ></i>  <sup><span class="badge badge-primary" style="padding: 4px 8px;">{{ somma }}</span></sup>
+
+            {% else  %}
+              <i class="fa fa-shopping-cart "></i>
+            {% endif %}
+          </a>
+        </li>
+       
+        {% else %}
+        <a href="/accounts/login" class="nav-item mr-5" style="text-decoration: none; color:black;"> Login</a>
+        <li class="nav-item mr-5"> Carrello  &nbsp;<i class="fa fa-shopping-cart "></i>
+        </li>
+        {% endif %}
+       
+       
+
+      </ul>
+      
+      
+    </div>
+  </nav>  
+    {% block content %}
+    {% endblock content %}
+   
+     <!-- endpage sidmen style-->
+     <div class="endpage" >
+        <div class="sezione1"><h4>Sitemap</h4><br><a href="{% url 'page-vasi' %}" style="text-decoration: none ; color: black;">Vasi Idroponici</a><br><br><a href="{% url 'page-torri' %}" style="text-decoration: none ;color: black;">Sistemi Idroponici</a><br><br><a href="" style="text-decoration: none ;color: black;">Accessori</a><br><br><a href="" style="text-decoration: none ;color: black;">Nuovi Arrivi</a><br><br><a href="" style="text-decoration: none ;color: black;">Offerte</a><br></div>
+        <div class="sezione1"><h4>Support</h4><br><p>Contattaci</p><p>FAQs</p></div>
+        <div class="sezione2"><h4> Be the First to Know</h4><br><p>Sign up to our emails to receive exclusive <br> drops and discounts.</p>
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp" placeholder="Inserisci il tuo nome">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Inserisci indirizzo email">
+            </div>
+            <div class="form-group">
+              <input type="date" class="form-control" id="exampleInputDate1" >
+            </div>
+            <button type="button" class="btn btn-outline-secondary">Iscriviti</button>
+          </form>
+        </div>
+        <div class="sezione2"><h4>Contatti
+        </h4><br><p>pangeahydroponics@gmail.com</p>
+          <div class="social-links" >
+            <div class="social-link" >
+              <img src="/static/facebook.png" alt="">
+              
+            </div>
+            <div class="social-link">
+              <img src="/static/instagram.png" alt="">
+            </div>
+            <div class="social-link">
+              <img src="/static/tik-tok.png" alt="">
+            </div>
+          </div>
+        </div>
+      
+
+      </div>
+    
+      <div class="copyright">
+        <div class="profile">
+          <div class="profileinner"><p > 2022 PANGEAHYDROPONICS <br> Website Developed By Lorenzo Galimberti</p></div>
+                   
+        </div>
+        <div class="cards">
+          <div class="box">
+            <div class="payment"><img src="/static/google-pay.png" title="Google Pay"></div>
+            <div class="payment"><img src="/static/apple-pay.png" alt="" title="Apple Pay"></div>
+            <div class="payment"><img src="/static/icons8-mastercard-logo-96.png" alt="" title="Mastercard"></div>
+            <div class="payment"><img src="/static/visa.png" alt="" title="Visa"></div>
+            <div class="payment"><img src="/static/icons8-maestro-96.png" alt="" title="Maestro"></div>
+            <div class="payment"><img src="/static/american-express.png" alt="" title="American Express"></div>
+          </div>
+        </div>
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>  
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

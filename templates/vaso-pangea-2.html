@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      body{
+        margin: 0;
+        padding: 0;
+      }
+      .contenitore{
+        width: 100%;
+        min-height: 50vh;
+        display: flex;
+        padding: 0;
+        margin: 0%;
+      }
+      .contenitore .image{
+       width: 50%;
+       padding: 0;
+      }
+      .contenitore .image img{
+        width: 100%;
+        padding: 5%;
+        height: 100%
+      }
+      .immagine{
+        width: 90%;
+        margin-left: 5%;
+      }
+      #vaso-table{
+            
+            width: 60%;
+            margin:20%;
+            margin-top: 10%;
+            margin-bottom: 10%;
+        }
+        #vaso-table .specifica{
+            background-color: #bbb;
+           
+            width: 40%;
+        }
+        .progress-bars{
+            display: flex;
+            width: 100%;
+            margin: 0;
+            height: 156px;
+            
+            flex-direction: column;
+        }
+        .progress-bar{
+            
+            color: black;
+            background-color: transparent;
+            margin-bottom: 1%;
+            flex-grow: 1;
+            
+            display: flex;
+            flex-direction: row;
+        }
+        .progress-bar-value-stars{
+            margin-left: 0;
+            height: 100%;
+            width: 25%;
+           
+        }
+        .progress-bar-value-percentage{
+            
+            height: 100%;
+            width: 15%;
+           
+        }
+        .progress-bar-bar{
+            background-color: whitesmoke;
+            border-radius: 5px;
+            height: 100%;
+            width: 60%;
+            border: 1px solid grey;
+            overflow: hidden;
+        }
+        .progress-bar-bar-percentage{
+            width: 10%;
+            height: 100%;
+            border-top-left-radius: 0%;
+            background-color: #485E75;
+            border-top-left-radius: 2.5px ;
+            border-bottom-left-radius: 2.5px ;
+            
+        }
+       @media screen and (max-width:480px) {
+        .contenitore{
+            flex-direction: column;
+        }
+        .contenitore .image{
+            width: 100%;
+            
+        }
+        .contenitore .image img{
+            padding: 0%;
+        }
+        .immagine{
+            width: 100%;
+            margin: 0%;
+        }
+        #vaso-table{
+            
+            width: 90%;
+            margin:5%;
+            margin-top: 30%;
+        }
+       }
+    </style>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="contenitore">
+        <div class="image"> <img src="/static/vaso-pangea-2-a.png" class="descrizione-prodotto-1" alt=""></div>
+        <div class="image">  <img src="/static/vaso-pangea-2-3.png" class="descrizione-prodotto-1" alt=""></div>
+    </div>
+    
+    <!--tebella-->
+    <table class="table table-hover " id="vaso-table">
+        <thead>
+          <tr>
+           
+            
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="specifica"><b>materiale</b></td>
+            <td> ABS + Alluminio</td>
+            
+          </tr>
+          <tr>
+          
+            <td class="specifica"><b>Tensione</b></td>
+            <td>110-240V</td>
+          </tr>
+          <tr>
+            <td class="specifica"><b>Potenza Massima</b></td>
+            <td>35W</td>
+          
+          </tr>
+          <tr>
+            <td class="specifica"><b>Durata</b></td>
+            <td>50000H</td>
+          
+          </tr>
+          <tr>
+            <td class="specifica"><b>Luce Rossa</b></td>
+            <td>620-630nm</td>
+          
+          </tr>
+          <tr>
+            <td class="specifica"><b>Luce Blu</b></td>
+            <td>450-460nm</td>
+          
+          </tr>
+          <tr>
+            <td class="specifica"><b>Peso Netto</b></td>
+            <td>730g</td>
+          
+          </tr>
+          <tr>
+            <td class="specifica"><b>Dimensioni</b></td>
+            <td>372.5*302*118mm</td>
+          
+          </tr>
+        </tbody>
+      </table>
+      <div class="contenitore">
+        <div class="image"> <img src="/static/vaso-pangea-2-c.png" class="descrizione-prodotto-1" alt=""></div>
+        <div class="image">  <img src="/static/vaso-pangea-2-d.png" class="descrizione-prodotto-1" alt=""></div>
+    </div>
+     <img src="/static/vaso-pangea-2-2.png" class="immagine" alt="">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

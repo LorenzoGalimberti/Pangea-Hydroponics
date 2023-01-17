@@ -1,0 +1,593 @@
+{% extends "base_1.html" %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{{ block.super }}{% endblock head_title %}
+{% load bootstrap_icons %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/css/homepage.css">
+ 
+    <style>
+        body{
+                    z-index: 0.7;
+                    margin: 0%;
+                    padding: 0%;
+                  }
+                 
+                  
+                     
+    
+    </style>
+  </head>
+
+  <body>
+    
+      <!-- banner principale-->
+      <div class="bannerprincipale"> 
+        <div class="pop-up">
+          <h2>
+            sale off
+          </h2>
+          <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod porcdieu </p>
+          <button type="button" class="btn btn-outline-success" id="shopnow">shop now</button>
+
+        </div>
+      </div>
+       <!-- banner prodotti-->
+       <div class="bannerprodotti" > 
+        <div class="sitelink">  <p><a href="vasi-idroponici/" style="text-decoration: none; color: white;">Vasi Idroponici</a></p></div>
+        <div class="sitelink"> <p><a href="{% url 'page-torri' %}" style="text-decoration: none; color: white;">Sistemi Idroponici</a></p></div>
+        <div class="sitelink"><p><a href="accessori/" style="text-decoration: none; color: white;">Accessori</a></p></div>
+        <div class="sitelink"> <p><a href="{% url 'nuovi-prodotti' %}" style="text-decoration: none; color: white;">Nuovi arrivi</a></p></div>
+        <div class="sitelink"> <p><a href="{% url 'offerte' %}" style="text-decoration: none; color: white;">Offerte</a></p></div>
+        
+      </div>
+
+      <!-- costumer service-->
+      <div class="costumer">
+        <div class="costumer-service">
+        <div class="service">
+          <div class="c-s-image"><img src="static\track.png" alt=""></div>
+          <div class="c-s-content">
+            <p> <b>TRACK YOUR ORDER</b> <br> <a href="" style="color: green; text-decoration : none;">Login</a> in your account to get the status of your order</p>
+            
+          </div>
+        </div>
+          <div class="service">
+            <div class="c-s-image"><img src="static\customer-support.png" alt=""></div>
+          <div class="c-s-content"> <p> <b>COSTUMER SUPPORT</b> <br> <a href="" style="color: green; text-decoration : none;">Write to us</a> to know about Products and Delivery </p> </div>
+          
+         </div>
+         <div class="service">
+            <div class="c-s-image"><img src="static\newsletter.png" alt=""></div>
+          <div class="c-s-content"> <p> <b>NEWSLETTER</b> <br> <a href="" style="color: green; text-decoration : none;">active</a> in your account to get the status of your order</p></div>
+          </div>
+        </div>
+      </div>
+    <!-- trending products deskyop-->
+    <br>
+    <h5 style="height: 8%; margin-bottom: 0%; text-align: center;margin-top: 5%;"> <b> TRENDING PRODUCTS</b></h5>
+    <br>
+   <div class="nuovi-arrivi">
+     <div class="nuovi-arrivi-container">
+       <!-- for loop where insert all the products in the same category for now-->
+       {% for prodotto in  trending_products %}
+       <a href="/catalogo/{{ prodotto.slug }}/"  class="shop-card" style="text-decoration: none;">
+           <div class="image">
+             <img src="/static/{{ prodotto.slug }}.png" alt="">
+           </div>
+           
+            <h6 style="display: inline-block; color: #007185; margin-top: 6px; font-size: 20px;" >{{ prodotto.nome }}</h6> <br>
+            
+            {% if prodotto.media_recensioni > 1 and prodotto.media_recensioni <= 1.2 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 1.2 and prodotto.media_recensioni <= 1.7 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 1.7 and prodotto.media_recensioni <= 2.2 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            
+            {% if prodotto.media_recensioni > 2.2 and prodotto.media_recensioni <= 2.7 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 2.7 and prodotto.media_recensioni <= 3.2 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 3.2 and prodotto.media_recensioni <= 3.7 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 3.7 and prodotto.media_recensioni <= 4.2 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 4.2 and prodotto.media_recensioni <= 4.7 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 4.7  %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            {% endif %} 
+            
+           
+           
+            {% if prodotto.numero_recensioni > 0 %}
+            <span>{{ prodotto.numero_recensioni }}</span> &nbsp;&nbsp;
+            {% endif %}
+ 
+           
+ 
+             
+             
+             <span class="nuovi_prodotti" style="background-color:	#c030c0 ; text-align: center; color:	white; border-radius :22px;  "><small style="margin: 3.5%; "><b>NEW</b></small></span>
+             
+             <br>
+             {% if prodotto.sconto != 0 %}
+          <br>
+            <p style="margin-bottom:0 ; text-decoration: none ;">  <span style="font-size:21px ; margin-bottom: 0; color: #485e75;"><b>€{{ prodotto.prezzo_finale }}</b></span><span style="font-size:12px;color:#485e75;"> <del>€{{ prodotto.prezzo }}</del></span></p>
+          <p  class="btn btn-danger"><b>-{{ prodotto.sconto }}%</b></p>
+          {% else %}
+          <br>
+          <p ><span style="font-size:21px ; margin-bottom: 0; color: #485E75;"><b>€{{ prodotto.prezzo_finale }}</b></span></p>
+          {% endif %}
+          
+         </a>  
+       {% endfor %}
+   </div>
+         
+     
+   </div>
+    <!-- trending products mobile-->
+    
+    
+    <div id="carouselmobiletrending" class="carousel slide " data-ride="carousel" data-interval="false" data-touch="true" >
+     <div class="carousel-inner">
+       {% for prodotto in trending_products %}
+       <div  class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}" style="font-size: 20px">
+         <div class="item__third">
+           <a href="/catalogo/{{ prodotto.slug }}/" class="card" style="width: 100%; border: none; text-decoration: none; color:#485E75 ;">
+             <img src="/static/{{ prodotto.slug }}.png" class="d-block w-100" alt="" style="border-radius: 22px;padding: 0px;">
+             <div class="card-body">
+               <h5 class="card-title">{{ prodotto.nome }}</h5>
+               <p class="card-text">
+                {% if prodotto.sconto > 0 %}
+                <span ><s style="font-size: 12px;">€{{ prodotto.prezzo }} </s></span>
+                {% endif %}
+                €{{ prodotto.prezzo_finale }}
+              </p>
+              {% if prodotto.sconto > 0 %}
+              <div class="btn btn-danger"> <b>- <span >{{ prodotto.sconto }}</span>%</b></div>
+              {% endif %}
+               <p style="color: black ;"><small><b>{{ prodotto.categoria }}</b></small></p>
+               
+             </div>
+           </a>
+          
+           
+         
+         </div>
+         
+           
+    
+       </div>
+       {% endfor %}
+      
+     </div>
+ 
+   
+     
+         
+     <a class="carousel-control-prev" href="#carouselmobiletrending" role="button" data-slide="prev">
+       <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+       <span class="sr-only">Previous</span>
+     </a>
+     <a class="carousel-control-next" href="#carouselmobiletrending" role="button" data-slide="next">
+       <span class="carousel-control-next-icon" aria-hidden="false"></span>
+       <span class="sr-only">Next</span>
+     </a>
+     
+ 
+   </div>
+   <!---   saldi banner pubblicita-->
+   <div class="pubb1">
+    <button class="btn btn-primary"><i> SCOPRI LE NOSTRE OFFERTE</i></button>
+   </div>
+    <!-- shop by category-->
+     <div class="category">
+        
+       <div class="categoria">
+        <div class="btn btn-outline-dark">dark</div>
+       </div>
+       <div class="categoria">
+        <div class="btn btn-outline-dark">dark</div>
+       </div>
+       <div class="categoria">
+        <div class="btn btn-outline-dark">dark</div>
+       </div>
+       
+     </div>
+
+     <!-- category mobile carousel bt4-->
+     <div id="categorymobile" class="carousel slide" data-ride="carousel" data-interval="false" data-touch="true">
+      <ol class="carousel-indicators">
+        <li data-target="#categorymobile" data-slide-to="0" class="active"></li>
+        <li data-target="#categorymobile" data-slide-to="1"></li>
+        <li data-target="#categorymobile" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" alt="Third slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#categorymobile" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#categorymobile" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <br><br>
+
+
+    <!-- container nuovi prodotto-->
+ 
+ <br><br>
+ <h5 style="text-align: center ;"><b>NUOVI ARRIVI</b></h5>
+ <br>
+   <div class="nuovi-arrivi">
+     <div class="nuovi-arrivi-container">
+       <!-- for loop where insert all the products in the same category for now-->
+       {% for prodotto in  new_products %}
+       <a href="/catalogo/{{ prodotto.slug }}/"  class="shop-card" style="text-decoration: none;">
+           <div class="image">
+             <img src="/static/{{ prodotto.slug }}.png" alt="">
+           </div>
+           
+            <h6 style="display: inline-block; color: #007185; margin-top: 6px; font-size: 20px;" >{{ prodotto.nome }}</h6> <br>
+           
+            {% if prodotto.media_recensioni > 1 and prodotto.media_recensioni <= 1.2 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 1.2 and prodotto.media_recensioni <= 1.7 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 1.7 and prodotto.media_recensioni <= 2.2 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            
+            {% if prodotto.media_recensioni > 2.2 and prodotto.media_recensioni <= 2.7 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 2.7 and prodotto.media_recensioni <= 3.2 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 3.2 and prodotto.media_recensioni <= 3.7 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 3.7 and prodotto.media_recensioni <= 4.2 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 4.2 and prodotto.media_recensioni <= 4.7 %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+            {% endif %} 
+            {% if prodotto.media_recensioni > 4.7  %}
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            {% endif %} 
+            
+           
+            {% if prodotto.numero_recensioni > 0 %}
+            <span>{{ prodotto.numero_recensioni }}</span> &nbsp;&nbsp;
+            {% endif %}
+ 
+           
+ 
+             
+             
+            <span class="nuovi_prodotti" style="background-color:	#c030c0 ; text-align: center; color:	white; border-radius :22px;  "><small style="margin: 3.5%; "><b>NEW</b></small></span>
+             
+             <br>
+             {% if prodotto.sconto != 0 %}
+             <br>
+               <p style="margin-bottom:0 ; text-decoration: none ;">  <span style="font-size:21px ; margin-bottom: 0; color: #485e75;"><b>€{{ prodotto.prezzo_finale }}</b></span><span style="font-size:12px;color:#485e75;"> <del>€{{ prodotto.prezzo }}</del></span></p>
+             <p  class="btn btn-danger"><b>-{{ prodotto.sconto }}%</b></p>
+             {% else %}
+             <br>
+             <p ><span style="font-size:21px ; margin-bottom: 0; color: #485E75;"><b>€{{ prodotto.prezzo_finale }}</b></span></p>
+             {% endif %}
+          
+         </a>  
+       {% endfor %}
+   </div>
+         
+     
+   </div>
+<!-- nuovi arrivi phone-->
+<div id="carouselmobilenew" class="carousel slide " data-ride="carousel" data-interval="false" data-touch="true" >
+      
+    
+
+  
+ 
+  <div class="carousel-inner">
+    {% for prodotto in new_products %}
+    <div  class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}" style="font-size: 20px">
+      <div class="item__third">
+        <a href="/catalogo/{{ prodotto.slug }}/" class="card" style="width: 100%; border: none; text-decoration: none; color:#485E75 ;">
+          <img src="/static/{{ prodotto.slug }}.png" class="d-block w-100" alt="" style="border-radius: 22px; padding: 0px;">
+          <div class="card-body">
+            <h5 class="card-title">{{ prodotto.nome }}</h5>
+            <p class="card-text">
+              {% if prodotto.sconto > 0 %}
+              <span ><s style="font-size: 12px;">€{{ prodotto.prezzo }} </s></span>
+              {% endif %}
+              €{{ prodotto.prezzo_finale }}
+            </p>
+            {% if prodotto.sconto > 0 %}
+            <div class="btn btn-danger"> <b>- <span >{{ prodotto.sconto }}</span>%</b></div>
+            {% endif %}
+            <p style="color: black ;"><small><b>{{ prodotto.categoria }}</b></small></p>
+            
+          </div>
+        </a>
+       
+        
+      
+      </div>
+      
+        
+ 
+    </div>
+    {% endfor %}
+   
+  </div>
+  <a class="carousel-control-prev" href="#carouselmobilenew" role="button" data-slide="prev" ">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselmobilenew" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  
+
+</div>
+
+
+
+     <!-- div delle offerte-->
+     <div class="offerte-shop">
+       <div class="offerte-shop-img"></div>
+       <div class="offerte-shop-now"></div>
+     </div>
+
+      
+       <!-- vantaggi-->
+    
+      
+
+     
+     <div class="containervantaggi" >
+         <div class="flip-card"  >
+             <div class="flip-card-inner">
+               <div class="flip-card-front">
+                 <img src="static/save-energy.png" alt="Avatar" >
+               </div>
+               <div class="flip-card-back">
+                 <h5> <b> Risparmio Energetico</b></h5> 
+                 
+                 <p>basso consumo e paragone con la televisione</p>
+               </div>
+             </div>
+           </div>
+           <div class="flip-card">
+             <div class="flip-card-inner">
+               <div class="flip-card-front">
+                 <img src="static\growing.png" alt="Avatar" >
+               </div>
+               <div class="flip-card-back">
+                <h5> <b> Crescita Rapida</b></h5> 
+                  
+                 <p>cercare di trovare un paragone e un confronto rispetto alla crescita "naturale"</p>
+               </div>
+             </div>
+           </div>  
+           <div class="flip-card">
+             <div class="flip-card-inner">
+               <div class="flip-card-front">
+                 <img src="static\save-water.png" alt="Avatar" >
+               </div>
+               <div class="flip-card-back">
+                <h5> <b> Risparmio Idrico</b></h5> 
+                 <p>fare paragone quanta acqua risparmio in un mese e paragonata al fabbisogno di un essere umano</p>
+               </div>
+             </div>
+           </div>
+           <div class="flip-card">
+             <div class="flip-card-inner">
+               <div class="flip-card-front">
+                 <img src="static\no-plastic-bags.png" alt="Avatar" >
+               </div>
+               <div class="flip-card-back">
+                <h5> <b> Plastic Free</b></h5> 
+                  
+                 <p>coltivazione sana e dati su quanta plastica ingeriamo</p>
+               </div>
+             </div>
+           </div>  
+           <div class="flip-card">
+             <div class="flip-card-inner">
+               <div class="flip-card-front">
+                 <img src="static\hydroponic-gardening.png" alt="Avatar" >
+               </div>
+               <div class="flip-card-back">
+                <h5> <b>No soil</b></h5> 
+                 
+                 <p>perchè è utile ?</p>
+               </div>
+             </div>
+           </div>  
+     </div> 
+
+     <!-- VANTAGGI MOBILE-->
+   
+      <div id="carouselmobilevantaggi" class="carousel slide " data-ride="carousel" data-interval="4000">
+        <div class="carousel-inner ">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" alt="Third slide">
+          </div>
+        </div>
+      </div>
+       
+       <!-- container shop finale-->
+
+      <div class="shop-finale">
+        <h1> <b>Prodotti per la coltivazione idroponica di Alta Qualità per uso domestico</b></h1>
+        <h1><b>Scegli il prodotto che fa per te</b> </h1>
+      </div>
+  
+    
+      <!--Touch Swipe-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js'></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<script>src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"</script>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+  <script>
+    $('.carousel-item', '#carouselmobiletrending').each(function(){
+var next = $(this).next();
+if (! next.length) {
+next = $(this).siblings(':first');
+}
+next.children(':first-child').clone().appendTo($(this));
+}).each(function(){
+var prev = $(this).prev();
+if (! prev.length) {
+prev = $(this).siblings(':last');
+}
+prev.children(':nth-last-child(2)').clone().prependTo($(this));
+});
+  </script>
+
+<script>
+  $('.carousel-item', '#carouselmobilenew').each(function(){
+var next = $(this).next();
+if (! next.length) {
+next = $(this).siblings(':first');
+}
+next.children(':first-child').clone().appendTo($(this));
+}).each(function(){
+var prev = $(this).prev();
+if (! prev.length) {
+prev = $(this).siblings(':last');
+}
+prev.children(':nth-last-child(2)').clone().prependTo($(this));
+});
+</script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+       -->
+  </body>
+</html>
+
+{% endblock content %}
